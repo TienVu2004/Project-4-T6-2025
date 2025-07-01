@@ -9,4 +9,5 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long>, CustomerRepositoryCustom {
     CustomerEntity findByIdAndIsActive(Long id, Boolean isActive);
     void deleteByIdIn(List<Long> ids);
+    boolean existsByPhone(String phone);
 }

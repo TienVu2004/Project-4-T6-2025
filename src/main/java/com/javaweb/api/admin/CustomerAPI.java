@@ -46,6 +46,10 @@ public class CustomerAPI {
                 reponseDTO.setData(fieldErrors);
                 return ResponseEntity.badRequest().body(reponseDTO);
             }
+            if (customerRepository.existsByPhone(customerDTO.getPhone())) {
+                reponseDTO.setMessage("Phone already exists");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(reponseDTO);
+            }
         }catch (Exception e){
             reponseDTO.setMessage("Internal Server Error");
             reponseDTO.setDetail(e.getMessage());

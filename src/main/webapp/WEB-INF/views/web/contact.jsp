@@ -282,7 +282,11 @@
                 window.location.href = "/lien-he";
             },
             error : function(response){
-                alert("Thêm liên hệ thất bại!");
+                if(response.status === 409){
+                    alert("Số điện thoại đã tồn tại!");
+                } else {
+                    alert("Thêm liên hệ thất bại!");
+                }
             }
         });
     }
